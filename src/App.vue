@@ -1,19 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>VUE 组件</h2>
+    <Avatar :url="StaticImage" :width="100" :height="100"></Avatar>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Avatar from "./components/Avatar";
+import StaticImage from "./assets/images/IDR_PROFILE_AVATAR_43@2x.png";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      StaticImage,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    Avatar,
+  },
+};
 </script>
 
 <style lang="less">
