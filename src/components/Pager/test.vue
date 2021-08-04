@@ -1,20 +1,12 @@
 <template>
   <div id="app">
     <h2>VUE 组件</h2>
-    <!-- <Avatar :url="StaticImage" :width="100" :height="100"></Avatar>
-    <Avatar :url="StaticImage2" :width="100" :height="100"></Avatar>
-    <Icon :type="'weixin'"></Icon>
-    <Icon :type="'error'"></Icon> -->
     <Pager @changePage="pageChange" :current="current" :total="total" :visible-number="visibleNumber"></Pager>
   </div>
 </template>
 
 <script>
-import Avatar from "./components/Avatar";
-import Icon from "./components/Icon"
-import Pager from "./components/Pager"
-
-console.log(Avatar, Icon, Pager);
+import Pager from "../Pager"
 
 export default {
   name: "App",
@@ -26,8 +18,6 @@ export default {
     };
   },
   components: {
-    Avatar,
-    Icon,
     Pager
   },
   methods: {
@@ -40,7 +30,7 @@ export default {
 </script>
 
 <style lang="less">
-@import url('./styles/reset.less');
+@import url('../../styles/reset.less');
 
 
 </style>

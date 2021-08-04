@@ -6,18 +6,28 @@
           <Icon :type="'doubleArrowLeft'"></Icon>
         </a>
       </li>
-      <li @click.prevent="handleCurrent($event, current-1)"><a :class="{ disable: current === 1 }" href=""> &lt; </a></li>
+      <li @click.prevent="handleCurrent($event, current - 1)">
+        <a :class="{ disable: current === 1 }" href=""> &lt; </a>
+      </li>
     </ul>
     <ul class="pager-container-item">
-
-      <li v-for="(item, n) in numbers" :key="n" @click.prevent ="handleCurrent($event, item)" :class="{active: item === current}"><a href="">{{ item }}</a></li>
-
+      <li
+        v-for="(item, n) in numbers"
+        :key="n"
+        @click.prevent="handleCurrent($event, item)"
+        :class="{ active: item === current }"
+      >
+        <a href="">{{ item }}</a>
+      </li>
     </ul>
     <ul class="pager-container-item">
-      <li @click.prevent="handleCurrent($event, current+1)">
+      <li @click.prevent="handleCurrent($event, current + 1)">
         <a :class="{ disable: current === totalPager }" href=""> &gt; </a>
       </li>
-      <li class="pager-item-special pager-item-Rcricle" @click.prevent="handleCurrent($event, totalPager)">
+      <li
+        class="pager-item-special pager-item-Rcricle"
+        @click.prevent="handleCurrent($event, totalPager)"
+      >
         <a :class="{ disable: current === totalPager }" href="">
           <Icon :type="'doubleArrowRight'"></Icon
         ></a>
@@ -27,7 +37,7 @@
 </template>
 
 <script>
-import Icon from "./Icon.vue";
+import Icon from "../Icon";
 export default {
   name: "Pager",
   data() {
@@ -60,26 +70,26 @@ export default {
       return Math.ceil(this.total / this.limit);
     },
     visibleMin() {
-      let min = this.current - Math.floor( this.visibleNumber / 2 );
-      if(min < 1){
+      let min = this.current - Math.floor(this.visibleNumber / 2);
+      if (min < 1) {
         min = 1;
       }
       return min;
     },
     visibleMax() {
       let max = this.visibleMin - 1 + this.visibleNumber;
-      if(max > this.totalPager){
+      if (max > this.totalPager) {
         max = this.totalPager;
       }
       return max;
     },
     numbers() {
       let result = [];
-      for(let i = this.visibleMin; i <= this.visibleMax; i++){
+      for (let i = this.visibleMin; i <= this.visibleMax; i++) {
         result.push(i);
       }
       return result;
-    }
+    },
   },
   methods: {
     handleCurrent(e, newPage) {
@@ -87,13 +97,13 @@ export default {
         newPage = 1;
       }
       if (newPage > this.totalPager) {
-        newPage = this.totalPager
+        newPage = this.totalPager;
       }
-      if(this.current === newPage){
-        return ;
+      if (this.current === newPage) {
+        return;
       }
-      this.$emit('changePage', newPage);
-    }
+      this.$emit("changePage", newPage);
+    },
   },
   components: {
     Icon,
@@ -102,7 +112,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url("../styles/var.less");
+@import url('../../styles/var.less');
 .flexCenter() {
   display: flex;
   justify-content: center;

@@ -26,7 +26,7 @@ const IconMap = {
     doubleArrowRight: 'icon-shuangjiantouxia',
     doubleArrowLeft: 'icon-shuangjiantouxia1'
 }
-
+export const type = Object.keys(IconMap);
 export default {
     name: "Icon",
     props: {
