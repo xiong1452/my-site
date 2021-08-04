@@ -22,7 +22,9 @@ const IconMap = {
     arrowUp: 'icon-icon',
     arrowDown: 'icon-icon1',
     empty: 'icon-empty',
-    chat: 'icon-liuyan'
+    chat: 'icon-liuyan',
+    doubleArrowRight: 'icon-shuangjiantouxia',
+    doubleArrowLeft: 'icon-shuangjiantouxia1'
 }
 
 export default {
@@ -42,7 +44,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url("//at.alicdn.com/t/font_2719464_6b3joba2yse.css");
+@import url("//at.alicdn.com/t/font_2719464_y6xoztc61g.css");
 
 
 </style>
