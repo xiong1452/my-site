@@ -16,7 +16,7 @@ const IconMap = {
     code: 'icon-code',
     about: 'icon-set_about_hov',
     weixin: 'icon-weixin',
-    mail: 'icon-email',
+    mail: 'icon-youxiang',
     github: 'icon-huaban88',
     qq: 'icon-qq',
     arrowUp: 'icon-icon',
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url("//at.alicdn.com/t/font_2719464_y6xoztc61g.css");
+@import url("//at.alicdn.com/t/font_2719464_laldxspf0go.css");
 
 
 </style>
