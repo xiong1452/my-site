@@ -1,0 +1,116 @@
+<template>
+  <div class="Menu-container">
+    <ul class="Menu-list">
+      <li
+        class="Menu-item"
+        :class="{ active: isSelected(item) }"
+        v-for="item in items"
+        :key="item.link"
+      >
+        <a :href="item.link">
+          <div class="Menu-Icon">
+            <Icon :type="item.icon"></Icon>
+          </div>
+          <span>{{ item.title }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import Icon from "../Icon";
+export default {
+  name: "Menu",
+  data() {
+    return {
+      items: [
+        {
+          link: "/",
+          title: "首页",
+          icon: "home",
+        },
+        {
+          link: "/blog",
+          title: "文章",
+          icon: "blog",
+          startWith: true,
+        },
+        {
+          link: "/about",
+          title: "关于我",
+          icon: "about",
+        },
+        {
+          link: "/code",
+          title: "项目&效果",
+          icon: "code",
+        },
+        {
+          link: "/chat",
+          title: "留言板",
+          icon: "chat",
+        },
+      ],
+    };
+  },
+  methods: {
+    isSelected(item) {
+      let link = item.link.toLowerCase();
+      let myPathName = location.pathname.toLowerCase();
+      if (item.startWith) {
+        return myPathName.startsWith(link);
+      }
+      return link === myPathName;
+    },
+  },
+  components: {
+    Icon,
+  },
+};
+</script>
+
+<style lang="less" scope>
+@import url("../../styles/var.less");
+.Menu-container {
+  width: 100%;
+  height: 100%;
+  color: @lightWords;
+  .Menu-list {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    height: 100%;
+  }
+}
+.Menu-item {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  box-sizing: border-box;
+  a {
+    display: flex;
+    flex-grow: 1;
+    span {
+      align-self: center;
+      margin-left: 15px;
+    }
+  }
+  &.active {
+    background: darken(@words, 10%);
+    color: @primary;
+  }
+  &:hover {
+    background: darken(@words, 10%);
+    color: @primary;
+    cursor: pointer;
+  }
+  .Menu-Icon {
+    padding-left: 40px;
+    align-self: center;
+    i {
+      font-size: 35px;
+    }
+  }
+}
+</style>

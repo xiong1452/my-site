@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url("//at.alicdn.com/t/font_2719464_laldxspf0go.css");
+@import url("//at.alicdn.com/t/font_2719464_3cfr900n1kb.css");
 
 
 </style>
