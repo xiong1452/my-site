@@ -1,31 +1,30 @@
 <template>
   <div class="app">
-    <Menu></Menu>
+    <side-aside></side-aside>
   </div>
 </template>
 
 <script>
-import Menu from "../Menu";
+import SideAside from "../SideAside";
 export default {
   name: "test",
   components: {
-    Menu,
+    SideAside,
   },
 };
 </script>
 
 <style lang="less">
-@import url("../../styles/reset.less");
+@import url("~@/styles/reset.less");
 html,
 body {
-  background: #000;
   width: 100%;
   height: 100%;
 }
 .app {
-  margin: 0 auto;
+  height: 100%;
+  width: 250px;
+  background: #000;
   border: 1px solid lightblue;
-  width: 220px;
-  height: 200px;
 }
 </style>

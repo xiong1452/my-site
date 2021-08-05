@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import Icon from "../Icon";
-import qqImg from "../../assets/images/qq.jpg";
-import weChatImg from "../../assets/images/weixin.jpg";
+import Icon from "@/components/Icon";
+import qqImg from "@/assets/images/qq.jpg";
+import weChatImg from "@/assets/images/weixin.jpg";
 export default {
   name: "Contact",
   data() {
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import url("../../styles/var.less");
+@import url("~@/styles/var.less");
 .widthHeight() {
   width: 100%;
   height: 100%;
@@ -115,17 +115,19 @@ li:hover {
 }
 
 .contact-hidden-img {
-  width: 100%;
-  height: 220px;
+  width: 100px;
+  height: 100px;
   position: absolute;
   bottom: 34px;
   text-align: center;
   transform: scaleY(0);
   transform-origin: bottom left;
   transition: all 0.3s linear;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   img {
     height: 100%;
-    object-fit: contain;
     border-radius: 6px;
   }
   &::after {

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Icon from "../Icon";
+import Icon from "@/components/Icon";
 export default {
   name: "Menu",
   data() {
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="less" scope>
-@import url("../../styles/var.less");
+@import url("~@/styles/var.less");
 .Menu-container {
   width: 100%;
   height: 100%;

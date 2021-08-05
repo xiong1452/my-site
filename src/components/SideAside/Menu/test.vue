@@ -1,33 +1,31 @@
 <template>
   <div class="app">
-    <Contact></Contact>
+    <Menu></Menu>
   </div>
 </template>
 
 <script>
-import Contact from "../Contact";
+import Menu from "../Menu";
 export default {
   name: "test",
   components: {
-    Contact,
+    Menu,
   },
 };
 </script>
+
 <style lang="less">
-@import "../../styles/reset.less";
+@import url("~@/styles/reset.less");
 html,
 body {
+  background: #000;
   width: 100%;
   height: 100%;
-  background: #000;
 }
 .app {
-  width: 240px;
-  height: 200px;
+  margin: 0 auto;
   border: 1px solid lightblue;
-  background: #000;
-  position: absolute;
-  top: 300px;
-  left: 300px;
+  width: 220px;
+  height: 200px;
 }
 </style>
