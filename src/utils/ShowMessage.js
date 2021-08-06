@@ -35,6 +35,7 @@ export default function (object) {
     } else {
         if (getComputedStyle(container).position === 'static') {
             container.style.position = 'relative'
+            container.style.height = '100%'
         }
     }
     container.appendChild(div);

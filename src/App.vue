@@ -33,7 +33,7 @@
                     content: '感谢评论',
                     type: 'info',
                     duration: 1000,
-                    container: this.$refs.name.$el,
+                    container: this.$refs.name,
                     fn: function () {
                         console.log("执行完成");
                     }
