@@ -1,0 +1,41 @@
+@import url("../styles/var.less");
+
+.Message-Container {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  border: 1px solid lightblue;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  color: white;
+  transform: translate(-50%, -50%) translateY(25px);
+  opacity: 0;
+  transition: all .6s;
+
+  .Message-Content {
+    margin-left: 5px;
+  }
+
+  .Message-Icon {
+    font-size: 25px;
+  }
+}
+
+.Message-info {
+  background: @primary;
+}
+
+.Message-success {
+  background: @success;
+}
+
+.Message-warn {
+  background: @warn;
+}
+
+.Message-error {
+  background: @danger;
+}

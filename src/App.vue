@@ -7,8 +7,9 @@
                 </div>
             </template>
             <template>
-                <div class="app-main">
+                <div class="app-main" ref="name">
                     <RouterView></RouterView>
+                    <button @click="MessageTop()">click</button>
                 </div>
             </template>
 
@@ -26,22 +27,37 @@
             Layout,
             SideAside
         },
-        methods: {}
+        methods: {
+            MessageTop() {
+                this.$showMessage({
+                    content: '感谢评论',
+                    type: 'info',
+                    duration: 1000,
+                    container: this.$refs.name.$el,
+                    fn: function () {
+                        console.log("执行完成");
+                    }
+                });
+            }
+        }
     };
 </script>
 
 <style lang="less">
     @import url('./styles/reset.less');
-    html, body{
+
+    html, body {
         width: 100%;
         height: 100%;
     }
+
     #app {
         position: fixed;
         width: 100%;
         height: 100%;
     }
-    .app-left{
+
+    .app-left {
         width: 250px;
         height: 100%;
         background: #000;
