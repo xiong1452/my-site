@@ -1,46 +1,51 @@
 <template>
-  <div id="app">
-    <h2>VUE 组件</h2>
-    <!-- <Avatar :url="StaticImage" :width="100" :height="100"></Avatar>
-    <Avatar :url="StaticImage2" :width="100" :height="100"></Avatar>
-    <Icon :type="'weixin'"></Icon>
-    <Icon :type="'error'"></Icon> -->
-    <Pager @changePage="pageChange" :current="current" :total="total" :visible-number="visibleNumber"></Pager>
-  </div>
+    <div id="app">
+        <Layout>
+            <template #left>
+                <div class="app-left">
+                    <SideAside></SideAside>
+                </div>
+            </template>
+            <template>
+                <div class="app-main">
+                    <RouterView></RouterView>
+                </div>
+            </template>
+
+        </Layout>
+    </div>
 </template>
 
 <script>
-import Avatar from "./components/Avatar";
-import Icon from "./components/Icon"
-import Pager from "./components/Pager"
+    import Layout from '@/components/Layout';
+    import SideAside from '@/components/SideAside'
 
-console.log(Avatar, Icon, Pager);
-
-export default {
-  name: "App",
-  data() {
-    return {
-      current: 1,
-      total: 402,
-      visibleNumber: 8
+    export default {
+        name: "App",
+        components: {
+            Layout,
+            SideAside
+        },
+        methods: {}
     };
-  },
-  components: {
-    Avatar,
-    Icon,
-    Pager
-  },
-  methods: {
-    pageChange(result) {
-      this.current = result;
-      // console.log(result);
-    }
-  }
-};
 </script>
 
 <style lang="less">
-@import url('./styles/reset.less');
-
+    @import url('./styles/reset.less');
+    html, body{
+        width: 100%;
+        height: 100%;
+    }
+    #app {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+    .app-left{
+        width: 250px;
+        height: 100%;
+        background: #000;
+    }
 
 </style>
+

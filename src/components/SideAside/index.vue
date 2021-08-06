@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style lang="less" scope>
+<style lang="less" scoped>
 @import url("~@/styles/var.less");
 html,
 .side-aside-container {
