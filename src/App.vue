@@ -9,7 +9,6 @@
             <template>
                 <div class="app-main" ref="name">
                     <RouterView></RouterView>
-                    <button @click="MessageTop()">click</button>
                 </div>
             </template>
 
@@ -27,19 +26,6 @@
             Layout,
             SideAside
         },
-        methods: {
-            MessageTop() {
-                this.$showMessage({
-                    content: '感谢评论',
-                    type: 'info',
-                    duration: 1000,
-                    container: this.$refs.name,
-                    fn: function () {
-                        console.log("执行完成");
-                    }
-                });
-            }
-        }
     };
 </script>
 
@@ -63,5 +49,9 @@
         background: #000;
     }
 
+    .app-main{
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
