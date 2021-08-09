@@ -70,6 +70,8 @@
                     Desc.style.width = this.descriptionWidth + 'px';
                 }, 1000)
 
+                this.$emit('loading', '加载完成');
+
             },
             setSize() {
                 this.containerSize = {

@@ -3,10 +3,14 @@ import App from './App.vue'
 import './styles/reset.less'
 import router from '@/router/index'
 import ShowMessage from "@/utils/ShowMessage";
-import './mock'
-import './api'
+import './mock';
+import './api';
+import Vloading from "@/directives/index"
+
 
 Vue.prototype.$showMessage = ShowMessage;
+
+Vue.directive('loading', Vloading);
 
 new Vue({
     render: h => h(App),

@@ -1,9 +1,10 @@
 <template>
 
-    <div class="Home-Container" ref="container" @wheel="handleWheel($event)">
+    <div class="Home-Container" ref="container" @wheel="handleWheel($event)" v-loading="imgLoadComplete">
         <ul class="Swiper-list" :style="{marginTop: moveMarginTop}" @transitionend="handletransition($event)">
             <li v-for="(item,n) in banner" :key="n" class="Swiper-Item">
-                <Swiper v-if="slowLoader(n)" :src="item.bigImg" :placeholder="item.midImg" :title="item.title"
+                <Swiper @loading="changeLoadImgComplete($event)" v-if="slowLoader(n)" :src="item.bigImg"
+                        :placeholder="item.midImg" :title="item.title"
                         :description="item.description"></Swiper>
             </li>
         </ul>
@@ -36,7 +37,8 @@
                 wheel: false,
                 render1: false,
                 render2: false,
-                render3: false
+                render3: false,
+                imgLoadComplete: true
             }
         },
         created() {
@@ -112,6 +114,9 @@
                 // console.log(this.$data);
                 // return ;
 
+            },
+            changeLoadImgComplete(e) {
+                this.imgLoadComplete = false;
             }
         },
         components: {
