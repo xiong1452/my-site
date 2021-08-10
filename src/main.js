@@ -4,7 +4,6 @@ import './styles/reset.less'
 import router from '@/router/index'
 import ShowMessage from "@/utils/ShowMessage";
 import './mock';
-import './api';
 import Vloading from "@/directives/index"
 
 
