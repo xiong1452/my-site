@@ -6,18 +6,21 @@ import Chat from '@/views/Chat';
 
 export default [
     {
-        path: "/", component: Home
+        name: "home", path: "/", component: Home
     },
     {
-        path: "/about", component: About
+        name: 'about', path: "/about", component: About
     },
     {
-        path: "/blog", component: Blog
+        name: 'blog', path: "/blog", component: Blog
     },
     {
-        path: "/Code", component: Code
+        name: 'category', path: "/blog/cate/:categoryId", component: Blog
     },
     {
-        path: "/chat", component: Chat
+        name: 'code', path: "/Code", component: Code
+    },
+    {
+        name: 'chat', path: "/chat", component: Chat
     }
 ];

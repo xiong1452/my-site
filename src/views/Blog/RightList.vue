@@ -5,6 +5,7 @@
             <li class="List-List" v-for="(item, n) in list" :key="n">
                 <span class="List-Content" @click="handleClick(item)"
                       :class="{active: item.isSelect}">{{ item.name }}</span>
+                <span :class="{active: item.isSelect}" class="List-Count" v-if="item.articleCount">{{ item.articleCount }}篇</span>
                 <RightList v-if="item.children" :list="item.children" @ListClick="handleClick"></RightList>
             </li>
         </ul>
@@ -23,7 +24,9 @@
         },
         methods: {
             handleClick(item) {
-                this.$emit("ListClick", item);
+                if (!item.isSelect) {
+                    this.$emit("ListClick", item);
+                }
             }
         }
     }
@@ -42,13 +45,13 @@
         display: flex;
         flex-wrap: wrap;
         line-height: 35px;
-        font-size: 24px;
+        font-size: 16px;
         min-height: 35px;
         padding-left: 25px;
         box-sizing: border-box;
 
         span {
-            align-self: center;
+            align-self: baseline;
             cursor: pointer;
 
             &.active {
@@ -56,5 +59,11 @@
                 font-weight: bold;
             }
         }
+    }
+
+    span.List-Count {
+        padding-left: 10px;
+        font-size: 12px;
+        color: @gray;
     }
 </style>

@@ -4,10 +4,13 @@ function getImgElement(el) {
     return el.querySelector('img[data-role="loading"]')
 }
 
-function createImageElement() {
+function createImageElement(binging) {
     let img = document.createElement("img");
     img.dataset.role = 'loading';
     img.src = urlImg;
+    if(binging.modifiers.center){
+        img.style.transform="translate(65%,-50%)"
+    }
     return img
 }
 
@@ -16,7 +19,7 @@ export default function (el, binging) {
         if (getImgElement(el)) {
             return;
         } else {
-            el.appendChild(createImageElement());
+            el.appendChild(createImageElement(binging));
         }
     } else {
         if (getImgElement(el)) {

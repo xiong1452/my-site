@@ -20,15 +20,16 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function (options) {
         data: {
             "total|2000-3000": 0,
             [`row|${query.limit || 10}`]: [{
-                title: "@ctitle",
-                desrciption: "@cparagraph(1, 10)",
+                id:"@guid",
+                title: "@ctitle(3,40)",
+                description: "@cparagraph(1, 10)",
                 category: {
                     "id|1-10": 0,
                     name: '分类@id',
                 },
                 "scanNumber|0-3000": 0,
                 "commentNumber|0-300": 30,
-                thumb: Mock.Random.image('300x250', "#000", "#fff", "Random Image"),
+                "thumb|1": [Mock.Random.image('300x250', "#000", "#fff", "Random Image"), null],
                 createDate: `@date('T')`,
             }]
         }

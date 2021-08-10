@@ -18,6 +18,7 @@
                 }, {
                     name: 'b',
                     isSelect: true,
+                    articleCount: 84,
                     children: [{
                         name: 'b-1',
                         isSelect: true
