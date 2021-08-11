@@ -17,3 +17,21 @@ export async function getBlogPra(page = 1, limit = 10, categoryid = -1) {
         }
     })
 }
+
+export async function getBlog(id) {
+    return await ins.get(`/api/blog/${id}`)
+}
+
+export async function postComment(commentInfo) {
+    return await ins.post('/api/comment', commentInfo);
+}
+
+export async function getComments(blogid, page = 1, limit = 10,) {
+    return await ins.get('/api/comment', {
+        params: {
+            blogid,
+            page,
+            limit
+        }
+    })
+}

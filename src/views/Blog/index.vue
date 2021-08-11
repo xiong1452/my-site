@@ -6,24 +6,39 @@
                 <ul>
                     <li v-for="item in data.row" :key="item.id">
                         <div class="thumb">
-                            <a href="">
+                            <RouterLink :to="{
+                                name: 'detail',
+                                params: {
+                                    id: item.id
+                                }
+                            }">
                                 <img
                                         :src="item.thumb"
                                         :alt="item.title"
                                         :title="item.title"
                                         v-if="item.thumb"
                                 />
-                            </a>
+                            </RouterLink>
                         </div>
                         <div class="main">
-                            <a href="">
+                            <RouterLink :to="{
+                                name: 'detail',
+                                params: {
+                                    id: item.id
+                                }
+                            }">
                                 <h2>{{ item.title }}</h2>
-                            </a>
+                            </RouterLink>
                             <div class="aside">
                                 <span>日期：{{ formData(item.createDate) }}</span>
                                 <span>浏览：{{ item.scanNumber }}</span>
                                 <span>评论: {{ item.commentNumber }}</span>
-                                <a href="/article/cate/8" class="">{{ item.category.name }}</a>
+                                <RouterLink :to="{
+                                    name: 'category',
+                                    params: {
+                                        categoryId: item.category.id
+                                    }
+                                }" class="">{{ item.category.name }}</RouterLink>
                             </div>
                             <div class="desc">
                                 {{ item.description }}
@@ -184,25 +199,5 @@
         }
     }
 
-    ::-webkit-scrollbar {
-        width: .5rem;
-        height: .5rem;
-        background: hsla(0, 0%, 100%, 0.6);
-    }
-
-    ::-webkit-scrollbar-track {
-        border-radius: 0;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        border-radius: 0;
-        background-color: rgba(95, 95, 95, .4);
-        transition: all .2s;
-        border-radius: .5rem;
-
-        &:hover {
-            background-color: rgba(95, 95, 95, .7);
-        }
-    }
 </style>
 

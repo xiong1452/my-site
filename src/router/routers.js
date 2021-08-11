@@ -3,6 +3,7 @@ import Blog from '@/views/Blog';
 import About from '@/views/About';
 import Code from '@/views/Code';
 import Chat from '@/views/Chat';
+import Detail from "@/views/Blog/Detail";
 
 export default [
     {
@@ -16,6 +17,9 @@ export default [
     },
     {
         name: 'category', path: "/blog/cate/:categoryId", component: Blog
+    },
+    {
+        name: 'detail', path: "/blog/:id", component: Detail
     },
     {
         name: 'code', path: "/Code", component: Code

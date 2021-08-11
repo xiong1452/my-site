@@ -44,7 +44,7 @@
         /*height: 35px;*/
         display: flex;
         flex-wrap: wrap;
-        line-height: 35px;
+        line-height: 40px;
         font-size: 16px;
         min-height: 35px;
         padding-left: 25px;

@@ -4,8 +4,8 @@ import './styles/reset.less'
 import router from '@/router/index'
 import ShowMessage from "@/utils/ShowMessage";
 import './mock';
-import Vloading from "@/directives/index"
-
+import Vloading from "@/directives/index";
+import {getBlog, postComment, getComments} from "@/api/index"
 
 Vue.prototype.$showMessage = ShowMessage;
 
