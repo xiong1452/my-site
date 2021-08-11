@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <template>
-            <div class="Detail-main" v-loading="isLoading">
+            <div class="Detail-main" ref="maincontainer" @scroll="handleScroll($event)" v-loading="isLoading">
                 <BlogDetail :article="data"></BlogDetail>
                 <BlogComment v-if="!isLoading"></BlogComment>
             </div>
@@ -31,7 +31,7 @@
         },
         computed: {
             getBlogId() {
-                return +this.$route.params.id
+                return +this.$route.params.id || 1
             }
         },
         created() {
@@ -46,6 +46,18 @@
             Layout,
             BlogComment
         },
+        methods: {
+            handleScroll($event) {
+                this.$bus.$emit('mainScroll', this.$refs.maincontainer);
+            }
+        },
+        updated() {
+            let hash = location.hash;
+            location.hash = '';
+            setTimeout(() => {
+                location.hash = hash;
+            }, 300)
+        }
     }
 </script>
 
