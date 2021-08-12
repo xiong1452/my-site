@@ -51,11 +51,14 @@
         },
         created() {
             const bebounde = ((fn) => {
+                let timer = null;
                 return function () {
-                    let timer = null;
+                    if(timer){
+                        clearTimeout(timer);
+                    }
                     timer = setTimeout(() => {
                         fn();
-                        clearTimeout(timer);
+                        this.timer = null
                     }, 30)
                 }
             })
