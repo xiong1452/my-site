@@ -51,6 +51,12 @@
                 this.$bus.$emit('mainScroll', this.$refs.maincontainer);
             }
         },
+        beforeDestroy() {
+            this.$bus.$emit('mainScroll', false);
+        },
+        destroyed() {
+            this.$bus.$off('mainScroll', this.handleScroll);
+        },
         updated() {
             let hash = location.hash;
             location.hash = '';

@@ -2,7 +2,7 @@
     <Layout>
 
         <template>
-            <div class="blog-list-container" v-loading="isLoading" ref="container">
+            <div class="blog-list-container" @scroll="handleScroll($event)" v-loading="isLoading" ref="container">
                 <ul>
                     <li v-for="item in data.row" :key="item.id">
                         <div class="thumb">
@@ -38,7 +38,8 @@
                                     params: {
                                         categoryId: item.category.id
                                     }
-                                }" class="">{{ item.category.name }}</RouterLink>
+                                }" class="">{{ item.category.name }}
+                                </RouterLink>
                             </div>
                             <div class="desc">
                                 {{ item.description }}
@@ -97,6 +98,7 @@
                 this.data = r;
                 this.isLoading = false
             })
+            // this.$bus.$on('mainScroll', )
         },
         methods: {
             formData,
@@ -122,7 +124,16 @@
             },
             async fetchDate() {
                 return await getBlogPra(this.routerInfo.page, this.routerInfo.limit, this.routerInfo.categoryId)
+            },
+            handleScroll(e) {
+                this.$bus.$emit('BlogListScroll', this.$refs.container)
             }
+        },
+        beforeDestroy() {
+            this.$bus.$emit('BlogListScroll', false);
+        },
+        destroyed() {
+            this.$bus.$off('BlogListScroll', this.handleScroll);
         },
         watch: {
             $route() {

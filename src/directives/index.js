@@ -8,8 +8,12 @@ function createImageElement(binging) {
     let img = document.createElement("img");
     img.dataset.role = 'loading';
     img.src = urlImg;
-    if(binging.modifiers.center){
-        img.style.transform="translate(65%,-50%)"
+    if (binging.modifiers.center) {
+        img.style.transform = "translate(65%,-50%)"
+    }
+    if (binging.modifiers.comment) {
+        img.style.width = '100px'
+        img.style.height = '100px'
     }
     return img
 }

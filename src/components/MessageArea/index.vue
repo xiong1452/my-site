@@ -6,7 +6,7 @@
             <span>({{ subTitle }})</span>
         </h3>
         <FormList :list="list"></FormList>
-        <div class="loading" v-loading="isListLoading"></div>
+        <div class="loading" v-loading.comment="isListLoading"></div>
     </div>
 </template>
 

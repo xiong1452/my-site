@@ -11,20 +11,22 @@
                     <RouterView></RouterView>
                 </div>
             </template>
-
         </Layout>
+        <Top></Top>
     </div>
 </template>
 
 <script>
     import Layout from '@/components/Layout';
     import SideAside from '@/components/SideAside'
+    import Top from "@/components/Top";
 
     export default {
         name: "App",
         components: {
             Layout,
-            SideAside
+            SideAside,
+            Top
         },
     };
 </script>
@@ -49,7 +51,7 @@
         background: #000;
     }
 
-    .app-main{
+    .app-main {
         width: 100%;
         height: 100%;
     }
