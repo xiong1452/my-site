@@ -1,66 +1,89 @@
 <template>
-  <div class="side-aside-container">
-    <div class="Avatar">
-      <Avatar
-        :url="'https://konachan.net/data/preview/1a/16/1a16728e8834cf9231a9ff2f4cdf0924.jpg'"
-        :width="150"
-        :height="150"
-      ></Avatar>
+    <div class="side-aside-container">
+        <div class="Avatar">
+            <template v-if="data">
+                <Avatar
+                        :url="data.avatar"
+                        :width="150"
+                        :height="150"
+                ></Avatar>
+            </template>
+
+        </div>
+        <div class="Menu">
+            <h1>熊宇星的博客</h1>
+            <Menu></Menu>
+        </div>
+
+        <template v-if="data">
+            <div class="Contact">
+                <Contact></Contact>
+            </div>
+            <div class="footer">{{ data.icp }}</div>
+        </template>
+
     </div>
-    <div class="Menu">
-      <Menu></Menu>
-    </div>
-    <div class="Contact">
-      <Contact></Contact>
-    </div>
-    <div class="footer">备案号: XXXXXXXX</div>
-  </div>
 </template>
 
 <script>
-import Avatar from "@/components/Avatar";
-import Contact from "./Contact";
-import Menu from "./Menu";
-export default {
-  name: "SideAside",
-  components: {
-    Avatar,
-    Contact,
-    Menu,
-  },
-};
+    import Avatar from "@/components/Avatar";
+    import Contact from "./Contact";
+    import Menu from "./Menu";
+
+    export default {
+        name: "SideAside",
+        components: {
+            Avatar,
+            Contact,
+            Menu,
+        },
+        computed: {
+            data() {
+                return this.$store.state.setting.data
+            }
+        }
+    };
 </script>
 
 <style lang="less" scoped>
-@import url("~@/styles/var.less");
-html,
-.side-aside-container {
-  height: 100%;
-  width: 100%;
-}
+    @import url("~@/styles/var.less");
 
-.Avatar {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-}
+    html,
+    .side-aside-container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
 
-.Menu {
-  height: 30%;
-  margin: 30px 0;
-}
+    .Avatar {
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+    }
 
-.Contact {
-  height: 20%;
-  margin: 50px 0;
-}
+    .Menu {
+        height: 30%;
+        margin-bottom: 50px;
+    }
 
-.footer {
-  display: flex;
-  padding-top: 15px;
-  padding-left: 30px;
-  color: @gray;
-  align-items: center;
-  flex-grow: 1;
-}
+    h1 {
+        color: @gray;
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .Contact {
+        height: 25%;
+        margin-bottom: 50px;
+    }
+
+    .footer {
+        position: absolute;
+        padding-top: 15px;
+        padding-left: 30px;
+        color: @gray;
+        align-items: center;
+        bottom: 40px;
+    }
 </style>

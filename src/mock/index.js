@@ -1,5 +1,6 @@
 import "./banner.js"
 import "./blog.js"
+import "./indexInfo.js"
 import Mock from 'mockjs'
 
 Mock.setup({

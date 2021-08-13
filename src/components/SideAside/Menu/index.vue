@@ -122,7 +122,7 @@
             align-self: center;
 
             i {
-                font-size: 35px;
+                font-size: 25px;
             }
         }
     }
