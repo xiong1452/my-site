@@ -39,3 +39,7 @@ export async function getComments(blogid, page = 1, limit = 10,) {
 export async function getIndexInfo(){
     return await ins.get('/api/getIndexInfo')
 }
+
+export async function getCodeData() {
+    return await ins.get('/api/code')
+}

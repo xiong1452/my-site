@@ -16,6 +16,7 @@
         created() {
             this.$bus.$on('mainScroll', this.EventFun)
             this.$bus.$on('BlogListScroll', this.EventFun)
+            this.$bus.$on('codeScroll', this.EventFun);
         },
         methods: {
             handleClick(e) {

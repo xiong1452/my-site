@@ -23,6 +23,7 @@ function setImgs() {
 }
 
 event.$bus.$on('BlogListScroll', bebounde(setImgs))
+event.$bus.$on('codeScroll', bebounde(setImgs))
 
 function setImg(img) {
     img.dom.src = defaultGif;
