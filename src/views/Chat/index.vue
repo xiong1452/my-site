@@ -1,13 +1,92 @@
 <template>
-    <h1>留言</h1>
+    <div class="Chat-Container" ref="ChatContainer" @scroll="chatScroll($event)" v-loading.once="mainLoading">
+        <MessageArea @commentSubmit="handleSubmit($event)" :title="'留言板'" :subTitle="`${data.total}`"
+                     v-if="!mainLoading" :list="data.row" :isListLoading="isLoading"></MessageArea>
+    </div>
 </template>
 
 <script>
+    import {getComments, postComment} from "@/api"
+    import MessageArea from "@/components/MessageArea"
+    import ShowMessage from "@/utils/ShowMessage";
+
     export default {
-        name: "index"
+        name: "Chat",
+        components: {
+            MessageArea
+        },
+        data() {
+            return {
+                data: {},
+                page: 1,
+                limit: 10,
+                isLoading: false,
+                mainLoading: true,
+                timer: null
+            }
+        },
+        created() {
+            getComments(this.getBlogId).then(r => {
+                this.data = r;
+                this.mainLoading = false
+            })
+        },
+        methods: {
+            handleSubmit(e) {
+                postComment().then(r => {
+                    this.data.row.unshift(r);
+                    this.data.total++;
+                    e();
+                })
+            },
+            getNewComment() {
+                getComments(this.getBlogId, this.page, this.limit).then(r => {
+                    this.data.row = this.data.row.concat(r.row)
+                    this.isLoading = false
+                })
+            },
+            chatScroll(e) {
+                if (this.timer) {
+                    clearTimeout(this.timer)
+                }
+                this.timer = setTimeout(() => {
+                    let rank = 100;
+                    let des = 0;
+                    let top = Math.abs(e.target.scrollTop + e.target.clientHeight - e.target.scrollHeight);
+                    if (top < rank && !this.isLoading) {
+                        des = this.data.total - this.data.row.length
+                        if (!(des >= 10)) {
+                            this.limit = des
+                        }
+                        if (des > 0) {
+                            this.isLoading = true
+                            this.getNewComment();
+                        } else if (top === 0) {
+                            ShowMessage({
+                                type: 'warn',
+                                content: "没有更多评论"
+                            })
+                        }
+                    }
+                    this.timer = null;
+                }, 20)
+            },
+        },
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+    .Chat-Container {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 25px 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
 
+    .message-area-container {
+        width: 700px;
+        margin: 0 auto;
+    }
 </style>

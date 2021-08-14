@@ -29,15 +29,11 @@
                     e();
                 })
             },
-            handleScroll(e) {
-                console.log(e);
-            },
             getNewComment() {
                 getComments(this.getBlogId, this.page, this.limit).then(r => {
                     this.data.row = this.data.row.concat(r.row)
                     this.isLoading = false
                 })
-
             }
 
         },

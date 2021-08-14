@@ -18,7 +18,14 @@ function createImageElement(binging) {
     return img
 }
 
-export default function (el, binging) {
+function setLoading(el, binging) {
+    if (binging.modifiers.once) {
+        if (!count) {
+            count++
+        } else {
+            return;
+        }
+    }
     if (binging.value) {
         if (getImgElement(el)) {
             return;
@@ -33,4 +40,19 @@ export default function (el, binging) {
             }, 300)
         }
     }
+}
+
+let count = 0
+
+export default {
+    bind(el, binging) {
+        setLoading(el, binging);
+        count = 0
+    },
+    update(el, binging) {
+        setLoading(el, binging)
+    },
+    unbind() {
+        count = 0;
+    },
 };

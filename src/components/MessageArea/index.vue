@@ -42,7 +42,7 @@
             handleSubmit(e) {
                 this.$emit('commentSubmit', e);
             }
-        }
+        },
     };
 </script>
 
