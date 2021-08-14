@@ -55,6 +55,12 @@ export default {
       this.$bus.$emit("codeScroll", this.$refs.projectContainer);
     },
   },
+  beforeDestroy() {
+    this.$bus.$emit("codeScroll", false)
+  },
+  destroyed() {
+    this.$bus.$off("codeScroll", this.codeContainer)
+  }
 };
 </script>
 

@@ -17,12 +17,14 @@
             this.$bus.$on('mainScroll', this.EventFun)
             this.$bus.$on('BlogListScroll', this.EventFun)
             this.$bus.$on('codeScroll', this.EventFun);
+            this.$bus.$on('chatScroll', this.EventFun);
         },
         methods: {
             handleClick(e) {
                 this.operateDom.scrollTop = 0;
             },
             EventFun(e) {
+
                 if (e === false) {
                     this.isActive = false
                     this.operateDom = false

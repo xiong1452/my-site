@@ -2,8 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routers'
 import setRouter from "@/utils/SetTitle"
+if(!window.VueRouter){
+    Vue.use(VueRouter)
+}
 
-Vue.use(VueRouter)
 
 const router = new VueRouter({
     routes,

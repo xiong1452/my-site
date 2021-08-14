@@ -70,8 +70,15 @@
                     }
                     this.timer = null;
                 }, 20)
+                this.$bus.$emit('chatScroll', this.$refs.ChatContainer)
             },
         },
+        beforeDestroy() {
+            this.$bus.$emit('chatScroll', false);
+        },
+        destroyed() {
+            this.$bus.$off('chatScroll', this.chatScroll);
+        }
     }
 </script>
 
