@@ -36,10 +36,28 @@ export async function getComments(blogid, page = 1, limit = 10,) {
     })
 }
 
+export async function postChat(commentInfo) {
+    return await ins.post('/api/comment', commentInfo);
+}
+
+export async function getChat(page = 1, limit = 10,) {
+    return await ins.get('/api/message', {
+        params: {
+            page,
+            limit
+        }
+    })
+}
+
+
 export async function getIndexInfo(){
-    return await ins.get('/api/getIndexInfo')
+    return await ins.get('/api/setting')
 }
 
 export async function getCodeData() {
-    return await ins.get('/api/code')
+    return await ins.get('/api/project')
+}
+
+export async function getAbout() {
+    return await ins.get('/api/about')
 }

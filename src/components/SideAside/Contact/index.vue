@@ -20,7 +20,7 @@
                 <a href=""> {{data.qq}} </a>
                 <div class="contact-hidden">
                     <div class="contact-hidden-img">
-                        <img :src="qqImg" alt=""/>
+                        <img :src="data.qqQrCode" alt=""/>
                     </div>
                 </div>
             </li>
@@ -31,7 +31,7 @@
                 <a href=""> {{data.weixin}} </a>
                 <div class="contact-hidden">
                     <div class="contact-hidden-img">
-                        <img :src="weChatImg" alt=""/>
+                        <img :src="data.weixinQrCode" alt=""/>
                     </div>
                 </div>
             </li>
@@ -41,17 +41,9 @@
 
 <script>
     import Icon from "@/components/Icon";
-    import qqImg from "@/assets/images/qq.jpg";
-    import weChatImg from "@/assets/images/weixin.jpg";
 
     export default {
         name: "Contact",
-        data() {
-            return {
-                qqImg,
-                weChatImg,
-            };
-        },
         components: {
             Icon,
         },

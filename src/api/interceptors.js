@@ -7,7 +7,7 @@ ins.interceptors.response.use(function (resp) {
         return resp.data.data
     }
     ShowMessage({
-        content: resp.data.msg,
+        content: JSON.parse(resp.data).msg,
         type: 'error'
     });
     return null

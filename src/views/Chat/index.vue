@@ -1,12 +1,12 @@
 <template>
     <div class="Chat-Container" ref="ChatContainer" @scroll="chatScroll($event)" v-loading.once="mainLoading">
         <MessageArea @commentSubmit="handleSubmit($event)" :title="'留言板'" :subTitle="`${data.total}`"
-                     v-if="!mainLoading" :list="data.row" :isListLoading="isLoading"></MessageArea>
+                     v-if="!mainLoading" :list="data.rows" :isListLoading="isLoading"></MessageArea>
     </div>
 </template>
 
 <script>
-    import {getComments, postComment} from "@/api"
+    import {getChat, postChat} from "@/api"
     import MessageArea from "@/components/MessageArea"
     import ShowMessage from "@/utils/ShowMessage";
 
@@ -26,23 +26,32 @@
             }
         },
         created() {
-            getComments(this.getBlogId).then(r => {
+            getChat().then(r => {
                 this.data = r;
                 this.mainLoading = false
             })
         },
         methods: {
             handleSubmit(e) {
-                postComment().then(r => {
-                    this.data.row.unshift(r);
-                    this.data.total++;
-                    e();
+                postChat({
+                    content: e.commentText,
+                    nickname: e.nickname
+                }).then(r => {
+                    if(r){
+                        this.data.rows.unshift(r);
+                        this.data.total++;
+                        e.callback(true);
+                    }else{
+                        e.callback(false)
+                    }
+
                 })
             },
             getNewComment() {
-                getComments(this.getBlogId, this.page, this.limit).then(r => {
-                    this.data.row = this.data.row.concat(r.row)
+                getChat(this.getBlogId, this.page, this.limit).then(r => {
+                    this.data.rows = this.data.rows.concat(r.rows)
                     this.isLoading = false
+                    this.page++
                 })
             },
             chatScroll(e) {
@@ -54,7 +63,7 @@
                     let des = 0;
                     let top = Math.abs(e.target.scrollTop + e.target.clientHeight - e.target.scrollHeight);
                     if (top < rank && !this.isLoading) {
-                        des = this.data.total - this.data.row.length
+                        des = this.data.total - this.data.rows.length
                         if (!(des >= 10)) {
                             this.limit = des
                         }

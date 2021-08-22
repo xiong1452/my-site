@@ -4,7 +4,7 @@
         <template>
             <div class="blog-list-container" @scroll="handleScroll($event)" v-loading="isLoading" ref="container">
                 <ul>
-                    <li v-for="item in data.row" :key="item.id">
+                    <li v-for="item in data.rows" :key="item.id">
                         <div class="thumb">
                             <RouterLink :to="{
                                 name: 'detail',
@@ -53,7 +53,7 @@
             </div>
         </template>
         <template #right>
-            <BlogCategory></BlogCategory>
+            <BlogCategory @categoryEvent="handleClick($event)"></BlogCategory>
         </template>
 
     </Layout>
@@ -84,7 +84,7 @@
             routerInfo() {
                 const page = +this.$route.query.page || 1;
                 const limit = +this.$route.query.limit || 10;
-                const categoryId = +this.$route.params.categoryId || -1
+                const categoryId = this.$route.params.categoryId || -1
                 return {
                     page,
                     limit,
@@ -127,6 +127,9 @@
             },
             handleScroll(e) {
                 this.$bus.$emit('BlogListScroll', this.$refs.container)
+            },
+            handleClick(e){
+                this.fetchDate()
             }
         },
         beforeDestroy() {

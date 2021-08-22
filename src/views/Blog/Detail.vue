@@ -31,7 +31,7 @@
         },
         computed: {
             getBlogId() {
-                return +this.$route.params.id || 1
+                return this.$route.params.id || 1
             }
         },
         created() {

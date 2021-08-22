@@ -33,9 +33,12 @@
         >
           github
         </a>
-        <p v-for="(desc, i) in item.description" :key="i">
-          {{ desc }}
-        </p>
+        <div class="description">
+          <p v-for="(desc, i) in item.description" :key="i">
+            {{ desc }}
+          </p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -104,12 +107,18 @@ export default {
 
     h2 {
       margin: 0;
+      font-weight: bold;
     }
   }
 
   .github {
     font-size: 14px;
     color: @primary;
+  }
+
+  .description{
+    margin-top: 35px;
+    font-weight: 100;
   }
 }
 </style>

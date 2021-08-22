@@ -7,7 +7,7 @@
 
 <script>
     import RightList from "./RightList";
-    import {getBlogType} from "@/api/index"
+    import {getBlogType,getBlogPra} from "@/api/index"
 
     export default {
         name: "BlogCategory",
@@ -28,7 +28,7 @@
         },
         computed: {
             getCategory() {
-                return +this.$route.params.categoryId || -1
+                return this.$route.params.categoryId || -1
             },
             list() {
                 const totalArticleCount = this.data.reduce((a, b) => a + b.articleCount, 0);
@@ -62,6 +62,7 @@
                         }
                     })
                 }
+                this.$emit('categoryEvent', e)
             }
         }
     }

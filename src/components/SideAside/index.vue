@@ -11,7 +11,9 @@
 
         </div>
         <div class="Menu">
-            <h1>熊宇星的博客</h1>
+            <template v-if="data">
+                <h1>{{ data.siteTitle }}</h1>
+            </template>
             <Menu></Menu>
         </div>
 

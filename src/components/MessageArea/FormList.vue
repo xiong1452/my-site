@@ -1,6 +1,6 @@
 <template>
     <ul class="data-list-container">
-        <li v-for="item in list" :key="item.id">
+        <li v-for="(item,n) in list" :key="n">
             <Avatar :url="item.avatar" :size="44"/>
             <div class="data">
                 <div class="nickname">{{ item.nickname }}</div>

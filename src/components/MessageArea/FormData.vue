@@ -63,16 +63,18 @@
                 }
 
                 this.isSubmit = true;
-                this.$emit('commentSubmit', () => {
-                    showMessage({
-                        content: '评论成功',
-                        container: this.$refs.container,
-                        type: 'success'
-                    })
+                this.$emit('commentSubmit', { callback: (e) => {
+                    if(e){
+                        showMessage({
+                            content: '评论成功',
+                            container: this.$refs.container,
+                            type: 'success'
+                        })
+                    }
                     this.isSubmit = false
                     this.nickname = '';
                     this.commentText = ''
-                })
+                }, nickname: this.nickname, commentText: this.commentText })
             }
         }
     };

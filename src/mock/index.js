@@ -1,5 +1,5 @@
-import "./banner.js"
-import "./blog.js"
+// import "./banner.js"
+// import "./blog.js"
 import "./indexInfo.js"
 import "./code.js"
 import Mock from 'mockjs'

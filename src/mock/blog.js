@@ -19,7 +19,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function (options) {
         msg: '',
         data: {
             "total|2000-3000": 0,
-            [`row|${query.limit || 10}`]: [{
+            [`rows|${query.limit || 10}`]: [{
                 id: "@guid",
                 title: "@ctitle(3,40)",
                 description: "@cparagraph(1, 10)",

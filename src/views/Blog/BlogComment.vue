@@ -1,6 +1,6 @@
 <template>
     <MessageArea @commentSubmit="handleSubmit($event)" :title="'评论列表'" :subTitle="`${data.total}`"
-                 :list="data.row" :isListLoading="isLoading"></MessageArea>
+                 :list="data.rows" :isListLoading="isLoading"></MessageArea>
 </template>
 
 <script>
@@ -23,16 +23,26 @@
         },
         methods: {
             handleSubmit(e) {
-                postComment().then(r => {
-                    this.data.row.unshift(r);
-                    this.data.total++;
-                    e();
+                postComment({
+                    blogId: this.getBlogId,
+                    content: e.commentText,
+                    nickname: e.nickname
+                }).then(r => {
+                    if(r){
+                        this.data.rows.unshift(r);
+                        this.data.total++;
+                        e.callback(true);
+                    }else{
+                        e.callback(false)
+                    }
+
                 })
             },
             getNewComment() {
                 getComments(this.getBlogId, this.page, this.limit).then(r => {
-                    this.data.row = this.data.row.concat(r.row)
+                    this.data.rows = this.data.rows.concat(r.rows)
                     this.isLoading = false
+                    this.page++
                 })
             }
 
@@ -45,13 +55,14 @@
         created() {
             getComments(this.getBlogId).then(r => {
                 this.data = r;
+                this.page++
             })
             this.$bus.$on("mainScroll", e => {
                 let rank = 50;
                 let des = 0;
                 let top = Math.abs(e.scrollTop + e.clientHeight - e.scrollHeight);
                 if (top < rank && !this.isLoading) {
-                    des = this.data.total - this.data.row.length
+                    des = this.data.total - this.data.rows.length
                     if (!(des >= 10)) {
                         this.limit = des
                     }

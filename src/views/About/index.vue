@@ -1,6 +1,6 @@
 <template>
     <div class='demo'>
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/lAIGb1lfpBw" title="YouTube video player"
+        <iframe width="100%" height="100%" :src="getSrc" title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
@@ -9,9 +9,20 @@
 </template>
 
 <script>
+    import {getAbout} from "@/api/index";
+
     export default {
         name: "about",
-
+        data() {
+            return {
+                getSrc: ''
+            }
+        },
+        created() {
+            getAbout().then( r => {
+               this.getSrc = r
+            })
+        }
     }
 </script>
 
