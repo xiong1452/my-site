@@ -3,7 +3,7 @@ import App from './App.vue'
 import './styles/reset.less'
 import router from '@/router/index'
 import ShowMessage from "@/utils/ShowMessage";
-import './mock';
+// import './mock';
 import Vloading from "@/directives/index";
 import lazy from "@/directives/lazy"
 import "@/utils/EventBus"
