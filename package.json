@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.6",
     "highlight.js": "^11.2.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "babel-plugin-component": "^1.1.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11",

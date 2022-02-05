@@ -11,13 +11,29 @@ import store from "./store"
 
 store.dispatch('setting/fetchSetting');
 
-
+import {
+    MessageBox
+} from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 Vue.prototype.$showMessage = ShowMessage;
 Vue.directive('loading', Vloading);
 Vue.directive('lazy', lazy);
 
-new Vue({
-    render: h => h(App),
-    router,
-    store
-}).$mount('#app')
+
+MessageBox.confirm("是否去往新版网站?", "提示", {
+    confirmButtonText: "确定",
+    cancelButtonText: "取消",
+    type: "info"
+}).then(res => {
+    window.location.href = "http://121.40.172.208/hexo";
+}, err => {
+    // ? Vue 为undefined,则直接开在加载界面
+    if (Vue) {
+        new Vue({
+            render: h => h(App),
+            router,
+            store
+        }).$mount('#app')
+    }
+});
+// ? 跳转
