@@ -20,8 +20,9 @@ function IsPc() {
     if (!flag) {
         location.href = "http://121.40.172.208/h5"
     } else {
-        location.protocol = "http://121.40.172.208"
+        // location.protocol = "http://121.40.172.208"
     }
+    return flag;
 }
 
 MessageBox.confirm("是否去往新版网站?", "提示", {
@@ -32,7 +33,10 @@ MessageBox.confirm("是否去往新版网站?", "提示", {
     window.location.href = "http://121.40.172.208/hexo/";
 }, err => {
     // ? 老版网站触发去往手机端
-    IsPc();
+    if(!IsPc()) {
+        // ? 不渲染后续内容
+        return ;
+    }
     // ? Vue 为undefined,则直接开在加载界面
     if (Vue) {
         new Vue({
